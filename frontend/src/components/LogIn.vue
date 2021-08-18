@@ -1,6 +1,6 @@
 <template>
     <div class="container">
-        
+        <h2 class="text-center">S'identifier</h2>
     <form class="row col-10 offset-1" id="formChecked">
         <div class="col-10 offset-1 col-md-6 offset-md-0">
             <input type="email" class="form-control border-dark" id="inputEmail" placeholder="email" aria-label="email" pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" required >
