@@ -10,7 +10,7 @@
         </div>
     </form>
     <div>
-        <a href="#" class="btn btn-dark bg-black col-4 offset-4 mt-3 mb-3" id="validate"><span class="white" >Connexion</span></a>
+        <a @click="checkAccount()" class="btn btn-dark bg-black col-4 offset-4 mt-3 mb-3" id="validate"><span class="white" >Connexion</span></a>
     </div>
 </div>
 </template>
@@ -18,8 +18,51 @@
 
 
 export default {
+    name: 'LogIn',
+    methods: {
+checkAccount(){
+
+    let formChecked = document.getElementById('formChecked').checkValidity();
+
     
+    if (formChecked == false) {
+        alert('Merci de bien vouloir remplir tout les champs requis afin de valider votre commande');
+
+    
+    }else{
+        let contact = {
+            email: document.getElementById('inputEmail').value,
+            password: document.getElementById('inputPassword').value, 
+        };
+        const sendLogin = fetch("http://localhost:3000/user/login", {
+            method: 'POST',
+            body: JSON.stringify(contact),
+            headers:{
+                'Content-Type' : 'application/json',
+            }
+        })
+        sendLogin.then( async response =>{
+
+            try{
+                let confirmation = await response.json();
+                console.log(confirmation);
+              
+                    sessionStorage.setItem("token", confirmation.token)
+                    sessionStorage.setItem("userName", confirmation.userName)
+                    sessionStorage.setItem("userFirstName", confirmation.userFirstName)
+                    sessionStorage.setItem("userId", confirmation.id)
+                    console.log(sessionStorage);
+                    window.location.href = "/accueil";
+
+            } catch(error) {
+                alert("Une erreur est survenue, veuillez retenter plus tard")
+            }
+        })
+    }
 }
+}
+    }
+    
 </script>
 <style scoped>
 

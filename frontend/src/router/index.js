@@ -1,6 +1,5 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import Home from '../views/Home.vue'
-import Créer from '../views/CreatePost.vue'
 
 const routes = [
   {
@@ -8,7 +7,7 @@ const routes = [
     name: 'Home',
     component: Home,
     meta:{
-      title:'Maison'
+      title:'Groupomania'
     }
   },
   {
@@ -17,14 +16,6 @@ const routes = [
     component: () => import( '../views/Accueil.vue'),
     meta:{
       title:'Accueil'
-    }
-  },
-  {
-    path: '/creer',
-    name: 'Créer',
-    component: Créer,
-    meta:{
-      title:'Création de post'
     }
   },
   {

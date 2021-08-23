@@ -62,6 +62,8 @@ exports.login = (req, res, next) => {
           }else{
           res.status(200).json({
             id: data.id,
+            userName: data.name,
+            userFirstName: data.firstName,
             token: jwt.sign(
               { id: data.id },
               process.env.DB_TOKEN,

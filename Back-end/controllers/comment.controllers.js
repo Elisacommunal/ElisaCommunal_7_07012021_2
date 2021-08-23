@@ -13,6 +13,8 @@ exports.create = (req, res) => {
     const comment = new Comment({
         commentaire: req.body.commentaire,
         id_article: req.body.id_article,
+        user_name: req.body.user_name,
+        user_firstName: req.body.user_firstName,
         id_User: req.body.id_User
       });
 

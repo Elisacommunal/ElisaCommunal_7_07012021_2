@@ -1,6 +1,6 @@
 <template>
 	<div id="app">
-		<Navbar/>
+		
 		<nav>
 		
 		</nav> 
@@ -10,13 +10,11 @@
 <script>
 
 
-import Navbar from './components/Navbar.vue'
+
 
 export default {
 	name: 'App',
-	components: {
-		Navbar
-	}
+	
 }
 
 </script>

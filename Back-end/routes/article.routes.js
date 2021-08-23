@@ -8,7 +8,7 @@ router.post('/', articleCtrl.create);
 router.get('/',  articleCtrl.findAll);
 router.get('/:articleId', articleCtrl.findOne);
 router.put('/:articleId', articleCtrl.update);
-router.delete('/:articleId', articleCtrl.delete);
+router.delete('/:articleId', auth, articleCtrl.delete);
 router.delete('/', articleCtrl.deleteAll);
 
 module.exports = router;

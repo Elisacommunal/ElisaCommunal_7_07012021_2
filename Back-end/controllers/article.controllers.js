@@ -1,5 +1,6 @@
 
 const sql = require("../models/db.js");
+const jwt = require('jsonwebtoken');
 const Article = require('../models/article.models.js');
 require('dotenv').config();
 
@@ -88,20 +89,50 @@ exports.update = (req, res) => {
 
 // Delete a Article with the specified ArticleId in the request
 exports.delete = (req, res) => {
-    Article.remove(req.params.articleId, (err, data) => {
-    if (err) {
-      if (err.kind === "not_found") {
-        res.status(404).send({
-          message: `L'id de l'article' ${req.params.articleId} n'a pas été trouvé.`
-        });
-      } else {
-        res.status(500).send({
-          message: "L'id ne peut pas etre supprimé" + req.params.articleId
-        });
+    const token = req.headers.authorization.split(' ')[1];
+    const decodedToken = jwt.verify(token, process.env.DB_TOKEN);
+    const userId = decodedToken.id;
+
+    function delRelatedId(data){
+      if (data.id_User == userId){
+        Article.remove(req.params.articleId, (err, data) => {
+        if (err) {
+          if (err.kind === "not_found") {
+            res.status(404).send({
+              message: `L'id de l'article' ${req.params.articleId} n'a pas été trouvé.`
+            });
+          } else {
+            res.status(500).send({
+              message: "L'id ne peut pas etre supprimé" + req.params.articleId
+            });
+          }
+        } else res.send({ message: `L'article a été supprimé` });
+      });
+    }else{
+      console.log("Id non trouvé");
+      res.status(404).send({
+        message: `L'id de l'article ${req.params.articleId} n'a pas été trouvé.`
+      });
       }
-    } else res.send({ message: `L'article a été supprimé` });
-  });
-};
+    }
+    Article.findById(req.params.articleId, (err, data) => {
+      if (err) {
+        if (err.kind === "not_found") {
+          res.status(404).send({
+            message: `L'id de l'article' ${req.params.articleId} n'a pas été trouvé.`
+          });
+        } else {
+          res.status(500).send({
+            message: "Erreur de recuperation de l'id de l'article" + req.params.articleId
+          });
+        }
+      } else {
+        delRelatedId(data)
+      };
+    });
+
+    }
+    
 
 // Delete all Articles from the database.
 exports.deleteAll = (req, res) => {

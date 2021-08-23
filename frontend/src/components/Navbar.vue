@@ -5,10 +5,10 @@
               <div class="navbar" id="navbarNav">
                 <ul class="navbar-nav">
                   <li class="d-flex row nav-item active">
-                        <router-link class="col-3 nav-link" to="/">Home</router-link>
-                        <router-link class="col-3 nav-link" to="/about">About</router-link>
+                         
+                        <router-link class="col-4 nav-link" to="/about">About</router-link>
 
-                    <a class="nav-link col-3" href="" title="Déconnexion">Déconnexion</a>
+                    <router-link @click="returnAccueil()" class="nav-link col-4" to="/">Déconnexion</router-link>
                   </li>
                 </ul>
               </div>
@@ -19,7 +19,13 @@
 <script>
 
 export default {
-    name: 'Navbar'
+    name: 'Navbar',
+    methods: {
+      returnAccueil(){
+        sessionStorage.clear();
+        console.log(sesssionStorage);
+      }
+    }
 }
 </script>
 <style scoped>

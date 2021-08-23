@@ -3,6 +3,8 @@ const sql = require("./db.js");
 const Comment = function(comment) {
     this.commentaire = comment.commentaire
     this.id_article = comment.id_article
+    this.user_name = comment.user_name;
+    this.user_firstName = comment.user_firstName;
     this.id_User = comment.id_User
 };
   
