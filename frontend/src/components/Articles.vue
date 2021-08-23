@@ -30,7 +30,6 @@
 </template>
 <script>
 import axios from "axios"
-import CreateComment from '@/components/CreateComment.vue'
 
 export default {
    name: 'Articles',
@@ -46,9 +45,6 @@ export default {
                this.dataArticle = response.data
            })
        }
-   },
-   components :{
-       CreateComment,
    },
    methods: {
        deletePost(data) {
