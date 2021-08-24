@@ -1,0 +1,36 @@
+/* body{
+    background-color: $color-tertiary;
+} */
+.btn__colorP {
+  background-color: #091f43;
+  color: #d4d4d4;
+}
+.btn__colorP:hover {
+  background-color: rgba(9, 31, 67, 0.8);
+  color: #d4d4d4;
+}
+.btn__colorS {
+  background-color: #d1515a;
+  color: #222222;
+}
+.btn__colorS:hover {
+  background-color: #bd323c;
+  color: #222222;
+}
+
+.card {
+  margin: 20px 0;
+  border-radius: 15px;
+  background-color: #f3f3f3;
+}
+
+.navbar__bgColor {
+  background-color: #091f43;
+}
+
+.center {
+  display: flex;
+  justify-content: center;
+}
+
+/*# sourceMappingURL=style.css.map */

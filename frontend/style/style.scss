@@ -1,0 +1,41 @@
+$color-primary :#091f43 ;
+$color-secondary : #d1515a;
+$color-tertiary :  #d4d4d4;
+
+/* body{
+    background-color: $color-tertiary;
+} */
+.btn{
+    &__colorP{
+      background-color: $color-primary;
+      color: $color-tertiary; 
+        &:hover{
+            background-color: transparentize($color-primary, .2);
+            color: $color-tertiary; 
+        } 
+    }
+    &__colorS{
+        background-color: $color-secondary; 
+        color: darken($color-tertiary, 70%);
+          &:hover{
+              background-color: darken($color-secondary, 10%);
+              color: darken($color-tertiary, 70%);
+          } 
+      }  
+}
+.card{
+    margin: 20px 0;
+    border-radius: 15px;
+    background-color: lighten($color-tertiary, 12%);
+    
+}
+.navbar{
+    &__bgColor{
+        background-color: $color-primary;
+    }
+    
+}
+.center{
+    display: flex;
+    justify-content: center;
+}

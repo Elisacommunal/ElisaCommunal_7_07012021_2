@@ -12,7 +12,7 @@
     </form>
 </div>   
 <div>
-    <a @click="createPost()" class="btn btn-dark bg-black col-4 offset-4" id="validate">Poster</a>
+    <a @click="createPost()" class="btn btn__colorP col-4 offset-4" id="validate">Poster</a>
 </div>
 </template>
 

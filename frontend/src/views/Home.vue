@@ -25,20 +25,20 @@ import LogIn from '@/components/LogIn.vue'
 export default {
     name: 'Home',
     data() {
-      return {
-        active: true,
-      }
+        return {
+            active: true,
+        }
     },
     components: {
-      SignUp,
-      LogIn
+        SignUp,
+        LogIn
     }
   }
 </script>
 <style>
     .img{
-      height: 500px;
-      margin-top: -150px;
-      margin-bottom: -150px;
+        height: 500px;
+        margin-top: -150px;
+        margin-bottom: -150px;
     }
 </style>

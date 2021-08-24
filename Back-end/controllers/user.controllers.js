@@ -10,31 +10,33 @@ require('dotenv').config();
 exports.signup =  (req, res, next) => {
    bcrypt.hash(req.body.password, 10)
       .then( hash => {
-        const utilisateur = new User({
-          email: req.body.email,
-          password: hash,
-          name: req.body.name,
-          firstName: req.body.firstName,
-          profession: req.body.profession,
-          admin: 0
-        });
+          const utilisateur = new User({
+              email: req.body.email,
+              password: hash,
+              name: req.body.name,
+              firstName: req.body.firstName,
+              profession: req.body.profession,
+              admin: 0
+          });
           User.create(utilisateur, (err, data) => {
-            if (err)
-              res.status(500).send({
-                message:
-                  err.message || "Une erreur est servenue lors de la création du User."
-              });
+              if (err)
+                res.status(500).send({
+                    message:
+                        err.message || "Une erreur est servenue lors de la création du User."
+                });
               else{
-                res.status(200).json({
-                  id: data.id,
-                  userName: data.name,
-                  userFirstName: data.firstName,
-                  token: jwt.sign(
-                    { id: data.id },
-                    process.env.DB_TOKEN,
-                    { expiresIn: '24h' }
-                  )
-                }); 
+                  res.status(200).json({
+                      isAdmin : data.Admin,
+                      id: data.id,
+                      userName: data.name,
+                      userFirstName: data.firstName,
+                      token: jwt.sign(
+                          { id: data.id,
+                            isAdmin : data.Admin},
+                          process.env.DB_TOKEN,
+                          { expiresIn: '24h' }
+                        )
+                  }); 
               }}); 
             })
       .catch(error => res.status(500).json({ error }));
@@ -43,35 +45,40 @@ exports.signup =  (req, res, next) => {
 
 
 exports.login = (req, res, next) => {
-  User.findOne(req.body.email, (err, data) => {
-    if (err) {
-      if (err.kind === "not_found") {
-        res.status(404).send({
-          message: `Le user avec l'email ${req.body.email} n'a pas été trouvé.`
-        });
-      } else {
-        res.status(500).send({
-          message: "Erreur de récupération du user avec l'email " + req.body.email
-        });
-      }
-    } else { 
-      bcrypt.compare(req.body.password, data.password)
-        .then(valid => {
-          if (!valid) {
-            return res.status(401).json({ error: 'Mot de passe incorrect !' });
-          }else{
-          res.status(200).json({
-            id: data.id,
-            userName: data.name,
-            userFirstName: data.firstName,
-            token: jwt.sign(
-              { id: data.id },
-              process.env.DB_TOKEN,
-              { expiresIn: '24h' }
-            )
-          })};
-        }).catch(error => res.status(500).json({ error }))
-  } 
+    User.findOne(req.body.email, (err, data) => {
+        if (err) {
+            if (err.kind === "not_found") {
+                res.status(404).send({
+                message: `Le user avec l'email ${req.body.email} n'a pas été trouvé.`
+            });
+            } else {
+                res.status(500).send({
+                  message: "Erreur de récupération du user avec l'email " + req.body.email
+            });
+          } 
+        } else { 
+            bcrypt.compare(req.body.password, data.password)
+                .then(valid => {
+                    if (!valid) {
+                        return res.status(401).json({ error: 'Mot de passe incorrect !' });
+                    }else{
+                        res.status(200).json({
+                              isAdmin : data.Admin,
+                              id: data.id,
+                              userName: data.name,
+                              userFirstName: data.firstName,
+                              token: jwt.sign(
+                                    { id: data.id,
+                                      isAdmin : data.Admin
+                                    },
+                                    process.env.DB_TOKEN,
+                                    { expiresIn: '24h' }
+                              )
+                          })
+                    };
+            })
+          .catch(error => res.status(500).json({ error }))
+      } 
   });
 };
 

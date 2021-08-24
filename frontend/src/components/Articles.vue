@@ -11,7 +11,7 @@
                             <h3 class="card-text article-title">{{ item.titre}}</h3>
                             <p class="card-text article-content">{{ item.contenu }}</p>
                             <div class="row">
-                                <a @click="deletePost(item.id)" class="col-4 offset-4 btn btn-danger article-link">Supprimer</a>
+                                <a v-if="item.id_User == sessionUserId" @click="deletePost(item.id)" class="col-4 offset-4 btn btn__colorS article-link">Supprimer</a>
                             </div>
                             <form id="formChecked">
                                 <div class="col-10 offset-1 col-md-6 offset-md-3">
@@ -20,7 +20,7 @@
                                 </div>
                             </form> 
                         <div>
-                            <a @click="createComment(item.id)" class="btn btn-dark bg-black col-4" id="validate">Commenter</a>
+                            <a @click="createComment(item.id)" class="btn btn__colorP col-4" id="validate">Commenter</a>
                         </div>
                         </div>
                     </div>
@@ -35,6 +35,7 @@ export default {
    name: 'Articles',
    data(){
        return {
+           sessionUserId: sessionStorage.getItem("userId"),
            dataArticle: 
            axios.get('http://localhost:3000/article', {
             method: 'GET',
