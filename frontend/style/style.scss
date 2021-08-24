@@ -2,9 +2,13 @@ $color-primary :#091f43 ;
 $color-secondary : #d1515a;
 $color-tertiary :  #d4d4d4;
 
-/* body{
-    background-color: $color-tertiary;
-} */
+body{
+    background-image: url(../src/assets/layered-waves-haikei.svg);
+    background-size: cover;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    
+} 
 .btn{
     &__colorP{
       background-color: $color-primary;

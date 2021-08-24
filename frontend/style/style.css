@@ -1,6 +1,10 @@
-/* body{
-    background-color: $color-tertiary;
-} */
+body {
+  background-image: url(../src/assets/layered-waves-haikei.svg);
+  background-size: cover;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+}
+
 .btn__colorP {
   background-color: #091f43;
   color: #d4d4d4;
