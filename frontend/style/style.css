@@ -1,5 +1,5 @@
 body {
-  background-image: url(../src/assets/layered-waves-haikei.svg);
+  background: url(../src/assets/layered-waves-haikei.svg), url(../src/assets/layered-waves-haikei2.svg);
   background-size: cover;
   background-attachment: fixed;
   background-repeat: no-repeat;
