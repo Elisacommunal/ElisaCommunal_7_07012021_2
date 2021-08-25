@@ -1,6 +1,5 @@
 <template>
     <div class="container">
-    <h2 class="text-center font__title">S'inscrire</h2>
     <form class="row col-10 offset-1" id="formChecked">
         <div class="col-10 offset-1 col-md-8 offset-md-2 mt-3">
             <input type="email" class="form-control border-dark" id="inputEmail" placeholder="📧 E-mail" aria-label="email" pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" required >
@@ -59,6 +58,7 @@ export default {
                 let confirmation = await response.json();
                 console.log(confirmation);
                 sessionStorage.setItem("token", confirmation.token)
+                sessionStorage.setItem("admin", confirmation.isAdmin)
                 sessionStorage.setItem("userName", confirmation.userName)
                 sessionStorage.setItem("userFirstName", confirmation.userFirstName)
                 sessionStorage.setItem("userId", confirmation.id)
