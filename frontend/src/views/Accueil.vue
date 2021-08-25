@@ -2,7 +2,8 @@
   <div>
     <Navbar/>
     <div>
-    <button @click="active = !active" class="btn btn__colorS col-4 offset-4 mt-3 mb-3" >Créer un post</button>
+    <img class="img d-flex col-10 offset-1 col-md-6 offset-md-3 col-lg-6 offset-lg-3" alt="logo" src="../assets/icon-left-font-monochrome-black.png">
+    <button @click="active = !active" class="btn btn__colorS col-4 offset-4 mt-5 mb-3" >Créer un post</button>
       <div v-if="active">
         <CreatePost/>
         </div>
@@ -33,8 +34,3 @@ export default {
   }
 }
 </script>
-<style lang="css">
-/* corail : #d1515a 
-bleu : #091f43
-gris : #d4d4d4*/
-</style>

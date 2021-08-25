@@ -1,5 +1,4 @@
 <template>
-    <h1 class="text-center">Groupomania</h1>
     <div class="container-fluid d-flex flex-column align-items-center">
             <div class="row m-4 col-8 offset-2 ">
                 <div class="container-article d-flex flex-column-reverse ">
@@ -11,11 +10,10 @@
                             <h3 class="card-text article-title">{{ item.titre}}</h3>
                             <p class="card-text article-content">{{ item.contenu }}</p>
                             <div class="row">
-                                <a v-if="item.id_User == sessionUserId" @click="deletePost(item.id)" class="col-4 offset-4 btn btn__colorS article-link">Supprimer</a>
+                                <a v-if="item.id_User == sessionUserId" @click="deletePost(item.id)" class="col-4 offset-4 btn btn__colorS mt-2 mb-2">Supprimer</a>
                             </div>
                             <form id="formChecked">
-                                <div class="col-10 offset-1 col-md-6 offset-md-3">
-                                    <label for="commentContent">Contenu de l'article</label>
+                                <div class="col-10 offset-1 col-md-6 offset-md-3 mt-2 mb-2">
                                     <textarea class="form-control border-dark" v-bind:id="item.id" placeholder="Commentaire" rows="1" required></textarea>
                                 </div>
                             </form> 
