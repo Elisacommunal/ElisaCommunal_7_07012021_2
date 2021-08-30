@@ -2,13 +2,14 @@ $color-primary :#091f43 ;
 $color-secondary : #d1515a;
 $color-tertiary :  #d4d4d4;
 
-/* body{
-    background: url(../src/assets/layered-waves-haikei.svg), url(../src/assets/layered-waves-haikei2.svg);
-    background-size: cover;
-    background-attachment: fixed;
-    background-repeat: no-repeat;
-    
-}  */
+body{
+    height: 100%;
+    position: relative;
+    padding-bottom: 100px;
+    @media screen and (max-width: 650px) {
+        padding-bottom: 0px;
+    } 
+} 
 .img{
     height: 500px;
     margin-top: -150px;
@@ -100,6 +101,48 @@ $color-tertiary :  #d4d4d4;
         } 
     }  
 }
+.footer{
+    &__wave{
+        position: absolute;
+        bottom: 0 !important;
+        width: 100%; 
+        fill: $color-primary; 
+        opacity:1; 
+        @media screen and (max-width: 975px) {
+            display: none;
+        }
+    }
+    &__Wave{
+        display: none;
+        position:  absolute;
+        bottom: 0 !important;
+        width: 100%; 
+        fill: $color-primary; 
+        opacity: 1;
+        @media screen and (max-width: 975px) {
+            display: block;
+        }
+        @media screen and (max-width:650px) {
+            display: none;
+        }
+    }
+    &--text{
+        color: $color-tertiary !important;
+    }
+    &__bgColor{
+        position: absolute;
+        bottom: 0 !important;
+        background-color: transparentize($color-primary, 1);
+        height: 60px;
+        width: 100%;
+        @media screen and (max-width: 650px) {
+            background-color:$color-primary !important;
+            position: relative;
+            bottom: 0 !important;
+        } 
+    } 
+}
+
 .center{
     display: flex;
     justify-content: center;

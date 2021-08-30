@@ -18,7 +18,7 @@
                 <div class="navbar" id="navbarNav">
                     <ul class="navbar-nav">
                         <li class="d-flex row nav-item active">   
-                            <router-link class="navbar--text col-4 nav-link" to="/about">About</router-link>
+                            <router-link class="navbar--text col-4 nav-link" to="/profil">Profil</router-link>
                             <router-link @click="returnAccueil()" class="navbar--text nav-link col-4" to="/">Déconnexion</router-link>
                         </li>
                     </ul>

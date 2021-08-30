@@ -9,13 +9,14 @@
                             </div>
                             <h3 class="card__title article-title">{{ item.titre}}</h3>
                             <p class="article-content">{{ item.contenu }}</p>
+                            <img v-if="item.imageUrl" :src="item.imageUrl" alt="">
+                            <p>{{item.image}}</p>
                             <div class="row">
                                 <a v-if="item.id_User == sessionUserId" @click="deletePost(item.id)" class="col-4 offset-4 btn btn__colorS mt-2 mb-2">Supprimer</a>
                             </div>
                             <button @click="getComments(item.id)" class="btn btn__colorP col-4" type="button" data-toggle="collapse" :data-target="'#collapseExample'+item.id" aria-expanded="false" aria-controls="collapseExample">
                                 Commentaires
                             </button>
-                    
                     <div class="collapse" :id="'collapseExample'+item.id">
                         <div class="card__comment card-body" v-if="comment" v-for="comm in comment" :key="comm.id">
                             <h5>{{comm.user_name}} {{comm.user_firstName}}</h5>
@@ -42,6 +43,7 @@
 <script>
 import axios from "axios"
 
+
 export default {
    name: 'Articles',
    data(){
@@ -63,7 +65,7 @@ export default {
    methods: {
        deletePost(data) {
            if(confirm("Supprimer ce post ?")){
-               axios.delete('http://localhost:3000/article/' + data, {
+               axios.delete('http://localhost:3000/article/'+ data, {
                    method: "DELETE",
                    headers: {
                     'Authorization': 'Bearer ' + sessionStorage.getItem("token")

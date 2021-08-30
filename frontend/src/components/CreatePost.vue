@@ -1,19 +1,25 @@
-<template>
-<div class="container">
-    <form id="formChecked">
-        <div class="col-10 offset-1 col-md-6 offset-md-3">
-            <label for="articleTitle">Titre de l'article</label>
-            <input type="text" class="form-control border-dark" id="articleTitle" placeholder="Titre" aria-label="titre" required >
-        </div>
-        <div class="col-10 offset-1 col-md-6 offset-md-3">
-            <label for="articleContent">contenu de l'article</label>
-            <textarea class="form-control border-dark" id="articleContent" placeholder="Contenu" rows="3" required></textarea>
-        </div>
-    </form>
+<template> <!-- pt-3 pb-3 -->
+<div class="container col-6 offset-3">
+    <div class="row card center  pt-3 pb-3">
+        <form id="formChecked col-8 offset-2">
+            <div class="col-10 offset-1 col-md-8 offset-md-2">
+                <label for="articleTitle">Titre de l'article</label>
+                <input type="text" class="form-control border-dark" id="articleTitle" placeholder="Titre" aria-label="titre" required >
+            </div>
+            <div class="col-10 offset-1 col-md-8 offset-md-2">
+                <label for="articleContent">contenu de l'article</label>
+                <textarea class="form-control border-dark" id="articleContent" placeholder="Contenu" rows="3" required></textarea>
+            </div>
+        </form>
+            <!-- <input type="file" accept="image/*" @change="onChange" />
+                <div id="preview">
+                    <img id="imageArticle" class="col-8 offset-2" v-if="imageUrl" :src="imageUrl" />
+                </div> -->
+        <div>
+            <a @click="createPost()" class="btn btn__colorP col-4 offset-4 mt-2" id="validate">Poster</a>
+        </div> 
+    </div>  
 </div>   
-<div>
-    <a @click="createPost()" class="btn btn__colorP col-4 offset-4" id="validate">Poster</a>
-</div>
 </template>
 
 <script>
@@ -28,7 +34,10 @@ export default {
             contenu: '',
             user_name: '',
             user_firstName: '',
-            id_User: ''
+            id_User: '',
+           /*  image: null,
+            imageUrl: null */
+
       }
   },
   methods:{
@@ -55,7 +64,7 @@ export default {
             .catch(function(error) {
                 console.log(error);
             }); 
-      }
+      },
   }
 } 
 </script>

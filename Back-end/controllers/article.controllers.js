@@ -12,15 +12,16 @@ exports.create = (req, res) => {
         message: "Le champ ne peut pas etre vide"
       });
     }
+
     const article = new Article({
-        titre: req.body.titre,
-        contenu: req.body.contenu,
-        user_name: req.body.user_name,
-        user_firstName: req.body.user_firstName,
-        id_User: req.body.id_User
-      });
+      titre: req.body.titre,
+      contenu: req.body.contenu,
+      user_name: req.body.user_name,
+      user_firstName: req.body.user_firstName,
+      id_User: req.body.id_User
+    });
 
-
+  
     // Save Article in the database
     Article.create(article, (err, data) => {
       if (err)

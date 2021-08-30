@@ -8,28 +8,30 @@ require('dotenv').config();
 
 // Create and Save a new user
 exports.signup =  (req, res, next) => {
-   bcrypt.hash(req.body.password, 10)
-      .then( hash => {
-          const utilisateur = new User({
-              email: req.body.email,
-              password: hash,
-              name: req.body.name,
-              firstName: req.body.firstName,
-              profession: req.body.profession,
-              admin: 0
-          });
+    bcrypt.hash(req.body.password, 10)
+        .then( hash => {
+            const utilisateur = new User({
+                email: req.body.email,
+                password: hash,
+                name: req.body.name,
+                firstName: req.body.firstName,
+                profession: req.body.profession,
+                admin: 0
+            });
           User.create(utilisateur, (err, data) => {
               if (err)
-                res.status(500).send({
-                    message:
-                        err.message || "Une erreur est servenue lors de la création du User."
-                });
+                  res.status(500).send({
+                      message:
+                          err.message || "Une erreur est servenue lors de la création du User."
+                  });
               else{
                   res.status(200).json({
                       isAdmin : data.Admin,
                       id: data.id,
+                      email : data.email,
                       userName: data.name,
                       userFirstName: data.firstName,
+                      profession: data.profession,
                       token: jwt.sign(
                           { id: data.id,
                             isAdmin : data.Admin},
@@ -64,9 +66,11 @@ exports.login = (req, res, next) => {
                     }else{
                         res.status(200).json({
                               isAdmin : data.Admin,
+                              email : data.email,
                               id: data.id,
                               userName: data.name,
                               userFirstName: data.firstName,
+                              profession: data.profession,
                               token: jwt.sign(
                                     { id: data.id,
                                       isAdmin : data.Admin
@@ -131,7 +135,7 @@ exports.update = (req, res, next) => {
           name: req.body.name,
           firstName: req.body.firstName,
           profession: req.body.profession,
-          admin: req.body.admin
+          admin: 0
         })
       User.updateById(req.params.userId, utilisateur, (err, data) => {
       if (err) {

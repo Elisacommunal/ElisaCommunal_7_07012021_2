@@ -48,9 +48,11 @@ checkAccount(){
                 console.log(confirmation);
               
                     sessionStorage.setItem("token", confirmation.token)
+                    sessionStorage.setItem("email", confirmation.email)
                     sessionStorage.setItem("admin", confirmation.isAdmin)
                     sessionStorage.setItem("userName", confirmation.userName)
                     sessionStorage.setItem("userFirstName", confirmation.userFirstName)
+                    sessionStorage.setItem("profession", confirmation.profession)
                     sessionStorage.setItem("userId", confirmation.id)
                     console.log(sessionStorage);
                     window.location.href = "/accueil";
