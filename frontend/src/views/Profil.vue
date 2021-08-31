@@ -1,46 +1,17 @@
 <template>
     <div>
         <Navbar/> 
-        <div class="container">
-            <div>
-                <img class="img d-flex col-10 offset-1 col-md-6 offset-md-3 col-lg-6 offset-lg-3" alt="logo" src="../assets/icon-left-font-monochrome-black.svg">
+        <Profil/>
+        <div>
+            <div class="footer__Wave mt-5">
+                <svg id="wave" class="footer__Wave" viewBox="0 0 1440 160" version="1.1" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M0,21L34.3,17.5C68.6,14,137,7,206,3.5C274.3,0,343,0,411,7C480,14,549,28,617,38.5C685.7,49,754,56,823,49C891.4,42,960,21,1029,24.5C1097.1,28,1166,56,1234,66.5C1302.9,77,1371,70,1440,80.5C1508.6,91,1577,119,1646,115.5C1714.3,112,1783,77,1851,70C1920,63,1989,84,2057,98C2125.7,112,2194,119,2263,129.5C2331.4,140,2400,154,2469,157.5C2537.1,161,2606,154,2674,147C2742.9,140,2811,133,2880,126C2948.6,119,3017,112,3086,101.5C3154.3,91,3223,77,3291,59.5C3360,42,3429,21,3497,17.5C3565.7,14,3634,28,3703,38.5C3771.4,49,3840,56,3909,77C3977.1,98,4046,133,4114,133C4182.9,133,4251,98,4320,80.5C4388.6,63,4457,63,4526,66.5C4594.3,70,4663,77,4731,70C4800,63,4869,42,4903,31.5L4937.1,21L4937.1,210L4902.9,210C4868.6,210,4800,210,4731,210C4662.9,210,4594,210,4526,210C4457.1,210,4389,210,4320,210C4251.4,210,4183,210,4114,210C4045.7,210,3977,210,3909,210C3840,210,3771,210,3703,210C3634.3,210,3566,210,3497,210C3428.6,210,3360,210,3291,210C3222.9,210,3154,210,3086,210C3017.1,210,2949,210,2880,210C2811.4,210,2743,210,2674,210C2605.7,210,2537,210,2469,210C2400,210,2331,210,2263,210C2194.3,210,2126,210,2057,210C1988.6,210,1920,210,1851,210C1782.9,210,1714,210,1646,210C1577.1,210,1509,210,1440,210C1371.4,210,1303,210,1234,210C1165.7,210,1097,210,1029,210C960,210,891,210,823,210C754.3,210,686,210,617,210C548.6,210,480,210,411,210C342.9,210,274,210,206,210C137.1,210,69,210,34,210L0,210Z"></path>
+                </svg>
+                <router-link class="footer__bgColor navbar-brand footer--text" to="/accueil">Groupomania - 2021</router-link>
             </div>
-        <div class="card text-center pt-4 pb-4"> 
-            <h1 class="text-center card__title--user">Profil</h1>
-            <h2 class="">E-mail : {{email}}</h2>
-            <h2 class="">Nom : {{userName}}</h2>
-            <h2 class="article-content">Prénom : {{userFirstName}}</h2>
-            <h2 class="article-content">Poste : {{profession}}</h2>
-            <div class="row center">
-                <button class="btn btn__colorP col-4 col-lg-2 m-2"  type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">Modifier</button>
-                    <div class="collapse" id="collapseExample">
-                        <div class="card__comment">
-                            <form class="row col-10 offset-1" id="formChecked">
-                                <div class="col-10 offset-1 col-md-8 offset-md-2 mt-3">
-                                    <input type="email" v-model="email" class="form-control border-dark" id="inputEmail" placeholder="📧 E-mail" aria-label="email" pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" required >
-                                </div>
-                                <div class="col-10 offset-1 col-md-8 offset-md-2 mt-3">
-                                    <input type="text" class="form-control border-dark" id="inputPassword" placeholder="🔒 Mot de passe"  aria-label="password" required>
-                                </div>
-                                <div class="col-10 offset-1 col-md-8 offset-md-2 mt-3">
-                                    <input type="text" v-model="userName" class="form-control border-dark" id="inputName" placeholder="👉 Nom"  aria-label="name" required>
-                                </div>
-                                <div class="col-10 offset-1 col-md-8 offset-md-2 mt-3">
-                                    <input type="text" v-model="userFirstName" class="form-control border-dark" id="inputFirstName" placeholder="👉 Prénom" aria-label="firstName" required>
-                                </div>
-                                <div class="col-10 offset-1 col-md-8 offset-md-2 mt-3">
-                                    <input type="text" v-model="profession" class="form-control border-dark" id="inputProfession" placeholder="💼 Poste"  aria-label="profession" pattern="[A-Z][a-z]{2,50}" required>
-                                </div>
-                            </form>
-                            <div>
-                                <a @click="updateProfil()" class="btn btn__colorP col-4 mt-2 mb-2" id="validate">Valider</a>
-                            </div>
-                        </div>
-                    </div>
-              <!-- <a @click="updateProfil()" class="btn btn__colorP col-4 col-lg-2 m-2" id="edit">Modifier</a> -->
-              <a @click="deleteProfil(id)" class="btn btn__colorS col-4 col-lg-2 m-2" id="del">Supprimer</a>
+            <div class="footer__bgColor">
+                <router-link class=" navbar-brand footer--text" to="/accueil">Groupomania - 2021</router-link>
             </div>
-        </div>
         </div>
     </div>
 </template>
@@ -48,89 +19,73 @@
 <script>
 // @ is an alias to /src
 import Navbar from '@/components/Navbar.vue';
+import Profil from '@/components/Profil.vue'
+
 import axios from 'axios';
 import VueJwtDecode from "vue-jwt-decode";
 
 
 export default {
   name: 'Accueil',
-  data(){
-    return{
-      email: sessionStorage.getItem("email"),
-      userName: sessionStorage.getItem("userName"),
-      userFirstName: sessionStorage.getItem("userFirstName"),
-      profession: sessionStorage.getItem("profession"),
-      id: sessionStorage.getItem("userId")
-    }
-  },
   components: {
-    Navbar
-  },
-  methods: {
-    deleteProfil(data) {
-        if(confirm("Supprimer le profil ?")){
-            const user_id = VueJwtDecode.decode(sessionStorage.getItem("token")).id;
-            console.log("User_id : ", user_id);
-                axios.delete('http://localhost:3000/user/'+ user_id, {
-                    method: "DELETE",
-                    headers: {
-                    'Authorization': 'Bearer ' + sessionStorage.getItem("token")
-                }})
-              .then(function(response) {
-                  console.log(response);
-                  sessionStorage.clear(),
-                  window.location.href= "/";
-              })
-              .catch(function(error) {
-                  console.log(error);
-              }
-          ); 
-        }
-    },
-    updateProfil(){
-    let formChecked = document.getElementById('formChecked').checkValidity();
-    if (formChecked == false) {
-        alert('Merci de bien vouloir remplir tout les champs requis afin de valider votre commande');
-    }else{
-        let contact = {
-            email: document.getElementById('inputEmail').value,
-            password: document.getElementById('inputPassword').value, 
-            name: document.getElementById('inputName').value,
-            firstName: document.getElementById('inputFirstName').value,
-            profession: document.getElementById('inputProfession').value,
-        };
-        const user_id = VueJwtDecode.decode(sessionStorage.getItem("token")).id;
-        console.log(user_id);
-        const sendSignUp = fetch('http://localhost:3000/user/' + user_id, {
-            method: 'PUT',
-            body: JSON.stringify(contact),
-            headers:{
-                'Content-Type' : 'application/json',
-                'Authorization': 'Bearer ' + sessionStorage.getItem("token")
-            }
-        })
-        sendSignUp.then( async response =>{
-
-            try{
-                let confirmation = await response.json();
-                console.log(confirmation);
-                sessionStorage.clear()
-                console.log(sessionStorage);
-                window.location.href = "/";
-            } catch(error) {
-                alert("Une erreur est survenue, veuillez retenter plus tard")
-            }
-        })
-}
-
-
-
-
-
-
-
-      
-    }
+    Navbar,
+    Profil,
+    
   }
 }
 </script>
+<style lang="scss" scoped>
+$color-primary :#091f43 ;
+$color-secondary : #d1515a;
+$color-tertiary :  #d4d4d4;
+.footer{
+    &__Wave{
+        display: block;
+        position: absolute;
+        z-index: -2;
+        width: 100%; 
+        margin-bottom: -50px;
+        fill: $color-primary; 
+        opacity: 0.9; 
+        @media screen and (max-width:650px) {
+            display: none;
+        }
+    }
+    &--text{
+        display: none;
+        color: $color-tertiary !important;
+        font-size: 18px;
+        font-weight: 200;
+        margin-right: 0 !important;
+        @media screen and (max-width:650px) {
+            display: block;    
+            margin-right: 0 !important;
+        }
+    }
+    &__bgColor{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+        bottom: -6rem;
+        background-color: transparentize($color-primary, 1);
+        width: 100%;
+        @media screen and (max-width: 1800px) { 
+            bottom: -5rem;
+        } 
+        @media screen and (max-width: 1100px) { 
+            bottom: -3rem;
+        } 
+        @media screen and (max-width: 870px) { 
+            bottom: -1.5rem;
+        } 
+        @media screen and (max-width: 650px) {
+            background-color:$color-primary !important;
+            opacity: 0.9;
+            margin-bottom: 0;
+            
+        } 
+    } 
+}
+
+</style>

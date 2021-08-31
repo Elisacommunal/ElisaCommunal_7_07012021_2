@@ -9,7 +9,7 @@
         </div>
         </div>
     <Articles/>
-    <Footer/>
+    <FooterAccueil/>
   </div>
 </template>
 
@@ -18,7 +18,7 @@
 import Navbar from '@/components/Navbar.vue'
 import Articles from '@/components/Articles.vue'
 import CreatePost from '@/components/CreatePost.vue'
-import Footer from '@/components/Footer.vue'
+import FooterAccueil from '@/components/FooterAccueil.vue'
 
 export default {
   name: 'Accueil',
@@ -32,7 +32,7 @@ export default {
     Articles,
     Navbar,
     CreatePost,
-    Footer
+    FooterAccueil
   }
 }
 </script>
