@@ -2,7 +2,9 @@ const express = require('express');
 const router = express.Router();
 
 const commentCtrl = require('../controllers/comment.controllers.js');
+
 const auth = require('../middleware/auth.js')
+const authComment = require('../middleware/authComment')
 
 router.post('/', commentCtrl.create);
 router.get('/', commentCtrl.findAll);

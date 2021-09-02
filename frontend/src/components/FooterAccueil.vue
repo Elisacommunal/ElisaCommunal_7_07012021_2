@@ -19,16 +19,18 @@ export default {
     name: 'Footer',
     methods: {
         returnAccueil(){
-            sessionStorage.clear();
-            
+            sessionStorage.clear(); 
         }
     }
 }
 </script>
 <style lang="scss" scoped>
+/*Variables*/
 $color-primary :#091f43 ;
 $color-secondary : #d1515a;
 $color-tertiary :  #d4d4d4;
+
+
 .footer{
     &__Wave{
         display: block;

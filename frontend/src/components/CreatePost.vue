@@ -1,23 +1,23 @@
-<template> <!-- pt-3 pb-3 -->
+<template> 
 <div class="container col-6 offset-3">
     <div class="row card center  pt-3 pb-3">
-        <form id="formChecked col-8 offset-2">
-            <div class="col-10 offset-1 col-md-8 offset-md-2">
-                <label for="articleTitle">Titre de l'article</label>
-                <input type="text" class="form-control border-dark" id="articleTitle" placeholder="Titre" aria-label="titre" required >
+        <form  id="formChecked" class="col-8 offset-2"  enctype="multipart/form-data">
+         <div class="form-group">
+                <input type="file" accept="image/*" id="imageInput" name="image" @change="onFileChange(e)">
+                <img :src="imagePreview" v-if="imagePreview" style="max-height: 100px;display:block;margin-top:10px">
             </div>
-            <div class="col-10 offset-1 col-md-8 offset-md-2">
+            <div class="col-10 offset-1 col-md-8 offset-md-2 form-group">
+                <label for="articleTitle">Titre de l'article</label>
+                <input type="text" class="form-control border-dark" v-model="titre" id="articleTitle" placeholder="Titre" aria-label="titre" required >
+            </div>
+            <div class="col-10 offset-1 col-md-8 offset-md-2 form-group">
                 <label for="articleContent">contenu de l'article</label>
-                <textarea class="form-control border-dark" id="articleContent" placeholder="Contenu" rows="3" required></textarea>
+                <textarea class="form-control border-dark" id="articleContent" v-model="contenu" placeholder="Contenu" rows="3" required></textarea>
             </div>
         </form>
-            <!-- <input type="file" accept="image/*" @change="onChange" />
-                <div id="preview">
-                    <img id="imageArticle" class="col-8 offset-2" v-if="imageUrl" :src="imageUrl" />
-                </div> -->
         <div>
-            <a @click="createPost()" class="btn btn__colorP col-4 offset-4 mt-2" id="validate">Poster</a>
-        </div> 
+            <button @click="createPost()"  class="btn btn__colorP col-4 offset-4 mt-2" id="validate"> Envoyer</button>
+        </div>  
     </div>  
 </div>   
 </template>
@@ -33,33 +33,59 @@ export default {
             titre: '',
             contenu: '',
             user_name: '',
-            user_firstName: '',
+            user_firstName: '' ,
             id_User: '',
-           /*  image: null,
-            imageUrl: null */
-
+            image: '',
+            imagePreview: ''
       }
   },
   methods:{
+      /* submit : function(){
+      this.$refs.form.submit()
+    }, */
+onFileChange(e) {
+            const imageInput = document.querySelector('input[type="file"]')
+            const file = imageInput.files[0];
+            console.log(file);
+            this.image = file;
+            console.log(this.image);
+
+            /* imageInput.setValue(file); /
+           /  this.sauceForm.updateValueAndValidity(); */
+            const reader = new FileReader();
+            reader.onload = () => {
+            this.imagePreview = reader.result ;
+            };
+            reader.readAsDataURL(file);
+    },
+
       createPost() {
-            const userName = sessionStorage.getItem("userName");
+           const userId = sessionStorage.getItem("userId");
             const userFirstName = sessionStorage.getItem("userFirstName");
-            const userId = sessionStorage.getItem("userId");
+            const userName =  sessionStorage.getItem("userName");
+            const titre = document.getElementById('articleTitle').value;
+            const contenu = document.getElementById('articleContent').value;
             console.log('test');
-            axios.post("http://localhost:3000/article",{
+        const formData = new FormData();
+        formData.append('titre', titre);
+        formData.append('contenu', contenu);
+        formData.append('user_name', userName);
+        formData.append('user_firstName', userFirstName);
+        formData.append('id_User', userId);
+        formData.append('image', this.image);
+
+
+            axios.post("http://localhost:3000/article", formData ,{
                 
                 headers:{
-                    'Authorization': 'Bearer ' + sessionStorage.getItem("token")
-                },
-                titre: document.getElementById('articleTitle').value,
-                contenu: document.getElementById('articleContent').value, 
-                user_name: userName,
-                user_firstName: userFirstName,
-                id_User: userId
-            })
+                    'Authorization': 'Bearer ' + sessionStorage.getItem("token"),
+                    'content-Type' : 'multipart/form-data'
+                }  
+            }
+            )
             .then(function(response) {
                 console.log(response);
-                document.location.reload();
+                 document.location.reload(); 
             })
             .catch(function(error) {
                 console.log(error);

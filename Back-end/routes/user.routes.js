@@ -3,6 +3,9 @@ const router = express.Router();
 
 const userCtrl = require('../controllers/user.controllers.js');
 const vpass = require('../middleware/validate-password')
+const auth = require('../middleware/auth')
+const authAdmin = require('../middleware/authAdmin')
+const authUser = require('../middleware/authUser')
 
 router.post('/signup',  vpass,  userCtrl.signup);
 router.post('/login', userCtrl.login);

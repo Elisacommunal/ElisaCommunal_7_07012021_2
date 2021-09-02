@@ -7,7 +7,7 @@
       this.name = client.name;
       this.firstName = client.firstName;
       this.profession = client.profession;
-      this.admin = client.admin;
+      this.Admin = client.Admin;
   };
   
     User.create = async (newUtilisateur, result) => {

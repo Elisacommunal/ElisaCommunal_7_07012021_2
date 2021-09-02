@@ -5,18 +5,20 @@ dotenv.config();
 
 module.exports = (req, res, next) => {
     try{
-        console.log("authArticle");
+        console.log("Coucou on est dans authComment");
     const token = req.headers.authorization.split(' ')[1];
     const decodedToken = jwt.verify(token, process.env.DB_TOKEN);
     const userId = decodedToken.userId;
     console.log("userToken",userId);
     const isAdmin = decodedToken.isAdmin;
     console.log("Admin",isAdmin);
-    console.log("idArticle de req.params", req.params.articleId);
+
+    console.log("idComment de req.params", req.params.commentId);
     
-    sql.query(`SELECT * FROM article WHERE id = ${req.params.articleId}`, (err, data) => {
+    sql.query(`SELECT * FROM commentaire WHERE id = ${req.params.commentId}`, (err, data) => {
         console.log(data);
-        if ( isAdmin === 1 || (data[0].id_user === userId)) {
+
+        if ( isAdmin === 1  || (data[0].id_user === userId)) {
             console.log("action autorisée");
             next();
         } else {

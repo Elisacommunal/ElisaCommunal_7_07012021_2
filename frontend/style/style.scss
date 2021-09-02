@@ -22,18 +22,26 @@ body{
 .btn{
     &__colorP{
       background-color: $color-primary;
-      color: $color-tertiary !important; 
+      color: $color-tertiary !important;
+      transition: 1250ms;
+      scale: 1;
         &:hover{
             background-color: transparentize($color-primary, .2) !important;
             color: $color-tertiary !important; 
+            transition: 1250ms;
+            scale : 1.1;
         } 
     }
     &__colorS{
         background-color: $color-secondary; 
         color: darken($color-tertiary, 70%);
+        transition: 1250ms;
+        scale: 1;
           &:hover{
               background-color: darken($color-secondary, 10%);
               color: darken($color-tertiary, 70%);
+              transition: 1250ms;
+              scale : 1.1;
           } 
       }  
 }
@@ -64,140 +72,10 @@ body{
         margin-bottom: 100px;
     }
 }
-.navbar{
-    &__wave{
-        position: absolute;
-        top: 0 !important;
-        width: 100%; 
-        fill: $color-primary; 
-        opacity: 0.9; 
-        transform: rotateY(180deg) rotate(180deg);
-        @media screen and (max-width: 975px) {
-            display: none;
-        }
-    }
-    &__Wave{
-        display: none;
-        position: absolute;
-        top: 0 !important;
-        width: 100%; 
-        fill: $color-primary; 
-        opacity: 0.9; 
-        transform: rotateY(180deg) rotate(180deg);
-        @media screen and (max-width: 975px) {
-            display: block;
-        }
-        @media screen and (max-width:650px) {
-            display: none;
-        }
-    }
-    &--text{
-        color: $color-tertiary !important;
-    }
-    &__bgColor{
-        position: relative;
-        background-color: transparentize($color-primary, 1);
-        height: 60px;
-        @media screen and (max-width: 650px) {
-            background-color:$color-primary;
-        } 
-    }  
-}
-/* .footer{
-    /* &__wave{
-        position: absolute;
-        z-index: -2;
-        width: 100%; 
-        fill: $color-primary; 
-        opacity: 0.9; 
-        @media screen and (max-width: 975px) {
-            display: none;
-        }
-    } 
-    &__Wave{
-        display: block;
-        position:  absolute;
-        z-index: -2;
-        width: 100%; 
-        bottom: 0;
-        fill: $color-primary; 
-        opacity: 0.9; 
-       /*  @media screen and (max-width: 975px) {
-            display: block;
-        } 
-        @media screen and (max-width:650px) {
-            display: none;
-        }
-    }
-    &--text{
-        color: $color-secondary !important;
-        margin-right: 0 !important;
-        @media screen and (max-width:650px) {
-            margin-bottom: 0px;
-            margin-right: 0 !important;
-        }
-    }
-    &__bgColor{
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        position: relative;
-        background-color: transparentize($color-primary, 1);
-        
-        width: 100%;
-        @media screen and (max-width: 650px) {
-            background-color:$color-primary !important;
-            
-        } 
-    } 
-} */
 
 .center{
     display: flex;
     justify-content: center;
 }
-.wave {
-    &__top{
-        position: relative;
-        z-index: -2;
-        margin-bottom: -170px;
-        height: 94px; 
-        width: 100%; 
-        fill: $color-secondary; 
-        opacity: 0.9; 
-        transform:rotateY(180deg);
-    }
-    &__bottom{
-        position: relative;
-        bottom: 0 !important;
-        z-index: -2;
-        height: 94px; 
-        width: 100%; 
-        fill: $color-primary; 
-        opacity: 0.8; 
-        transform: rotateY(180deg) rotate(180deg);
-    }
-    
-}
-/* .wave {
-    &__bottom{
-        display: block;
-        position: relative;
-        height: 200px;
-        background-image: url('data:image/svg+xml;utf8,<svg viewBox="0 0 1503 200" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><path fill="null" d="M 0 200 C 457.2 200 304.8 110 762 110 L 762 110 L 762 0 L 0 0 Z" stroke-width="0"></path> <path fill="null" d="M 761 110 C 1215.8 110 1064.2 0 1519 0 L 1519 0 L 1519 0 L 761 0 Z" stroke-width="0"></path> </svg>');
-        background-size: cover;
-        background-repeat: no-repeat;
-        transform: rotateY(180deg) rotate(180deg);
-    }
-    &__top{
-        display: block;
-        position: relative;
-        top:-2px;
-        height: 200px;
-        background-image: url('data:image/svg+xml;utf8,<svg viewBox="0 0 1503 200" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><path fill="null" d="M 0 200 C 457.2 200 304.8 110 762 110 L 762 110 L 762 0 L 0 0 Z" stroke-width="0"></path> <path fill="null" d="M 761 110 C 1215.8 110 1064.2 0 1519 0 L 1519 0 L 1519 0 L 761 0 Z" stroke-width="0"></path> </svg>');
-        background-size: cover;
-        background-repeat: no-repeat;
-        transform: rotateY(180deg) ;
-        }
-} */
+
    

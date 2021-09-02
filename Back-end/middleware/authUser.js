@@ -5,18 +5,19 @@ dotenv.config();
 
 module.exports = (req, res, next) => {
     try{
-        console.log("authArticle");
+        console.log("authUser");
     const token = req.headers.authorization.split(' ')[1];
     const decodedToken = jwt.verify(token, process.env.DB_TOKEN);
     const userId = decodedToken.userId;
     console.log("userToken",userId);
     const isAdmin = decodedToken.isAdmin;
     console.log("Admin",isAdmin);
-    console.log("idArticle de req.params", req.params.articleId);
+    console.log("idUser de req.params", req.params.userId);
     
-    sql.query(`SELECT * FROM article WHERE id = ${req.params.articleId}`, (err, data) => {
+    sql.query(`SELECT * FROM user WHERE id = ${req.params.userId}`, (err, data) => {
         console.log(data);
-        if ( isAdmin === 1 || (data[0].id_user === userId)) {
+
+        if ( isAdmin === 1 || (data[0].id === userId)) {
             console.log("action autorisée");
             next();
         } else {

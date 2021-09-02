@@ -4,7 +4,7 @@
             <div>
                 <img class="img d-flex col-10 offset-1 col-md-6 offset-md-3 col-lg-6 offset-lg-3" alt="logo" src="../assets/icon-left-font-monochrome-black.svg">
             </div>
-        <div class="card card--profil text-center pt-4 pb-4"> 
+        <div v-if="isAdmin == 0" class="card card--profil text-center pt-4 pb-4"> 
             <h1 class="text-center card__title--user">Profil</h1>
             <h2 class="">E-mail : {{email}}</h2>
             <h2 class="">Nom : {{userName}}</h2>
@@ -36,33 +36,62 @@
                             </div>
                         </div>
                     </div>
-              <!-- <a @click="updateProfil()" class="btn btn__colorP col-4 col-lg-2 m-2" id="edit">Modifier</a> -->
               <a @click="deleteProfil(id)" class="btn btn__colorS col-4 col-lg-2 m-2" id="del">Supprimer</a>
             </div>
+        </div>
+        <div v-if="isAdmin == 1">
+            <div class="container-fluid d-flex flex-column align-items-center">
+            <div class="row m-4 col-8 offset-2 ">
+                <div class="container-article d-flex flex-column-reverse ">
+                    <div class="card text-center" v-if="dataUser" v-for="user in dataUser" :key="user.id"> 
+                        <h1 class="text-center card__title--user">Profil</h1>
+                        <h2 class="">E-mail : {{user.email}}</h2>
+                        <h2 class="">Nom : {{user.name}}</h2>
+                        <h2 class="article-content">Prénom : {{user.firstName}}</h2>
+                        <h2 class="article-content">Poste : {{user.profession}}</h2>    
+                        <div class="row">
+                            <a  @click="deleteUser(user.id)" class="col-4 offset-4 btn btn__colorS mt-2 mb-2">Supprimer</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    </div>
+            
         </div>
         </div>
     </div>
 </template>
 
 <script>
-// @ is an alias to /src
+
 import axios from 'axios';
 import VueJwtDecode from "vue-jwt-decode";
 
 
 export default {
-  name: 'Accueil',
+  name: 'Profil',
   data(){
     return{
-      email: sessionStorage.getItem("email"),
-      userName: sessionStorage.getItem("userName"),
-      userFirstName: sessionStorage.getItem("userFirstName"),
-      profession: sessionStorage.getItem("profession"),
-      id: sessionStorage.getItem("userId")
-    }
+        isAdmin: VueJwtDecode.decode(sessionStorage.getItem("token")).isAdmin,
+        email: sessionStorage.getItem("email"),
+        userName: sessionStorage.getItem("userName"),
+        userFirstName: sessionStorage.getItem("userFirstName"),
+        profession: sessionStorage.getItem("profession"),
+        id: sessionStorage.getItem("userId"),
+        dataUser: 
+           axios.get('http://localhost:3000/user', {
+            method: 'GET',
+            headers: {
+                'Authorization': 'Bearer ' + sessionStorage.getItem("token")
+    }})
+           .then((response) => {
+               this.dataUser = response.data
+               console.log(sessionStorage);
+           })
+       }
   },
   methods: {
-    deleteProfil(data) {
+     deleteProfil(data) {
         if(confirm("Supprimer le profil ?")){
             const user_id = VueJwtDecode.decode(sessionStorage.getItem("token")).id;
             console.log("User_id : ", user_id);
@@ -70,7 +99,8 @@ export default {
                     method: "DELETE",
                     headers: {
                     'Authorization': 'Bearer ' + sessionStorage.getItem("token")
-                }})
+                    }
+                })
               .then(function(response) {
                   console.log(response);
                   sessionStorage.clear(),
@@ -96,7 +126,7 @@ export default {
         };
         const user_id = VueJwtDecode.decode(sessionStorage.getItem("token")).id;
         console.log(user_id);
-        const sendSignUp = fetch('http://localhost:3000/user/' + user_id, {
+        const sendUpdate = fetch('http://localhost:3000/user/' + user_id, {
             method: 'PUT',
             body: JSON.stringify(contact),
             headers:{
@@ -104,7 +134,7 @@ export default {
                 'Authorization': 'Bearer ' + sessionStorage.getItem("token")
             }
         })
-        sendSignUp.then( async response =>{
+        sendUpdate.then( async response =>{
 
             try{
                 let confirmation = await response.json();
@@ -115,17 +145,25 @@ export default {
             } catch(error) {
                 alert("Une erreur est survenue, veuillez retenter plus tard")
             }
-        })
-}
-
-
-
-
-
-
-
-      
-    }
+        })} 
+    },
+    deleteUser(donnee) {
+        if(confirm("Supprimer le profil ?")){
+                axios.delete('http://localhost:3000/user/'+ donnee, {
+                    method: "DELETE",
+                    headers: {
+                    'Authorization': 'Bearer ' + sessionStorage.getItem("token")
+                }})
+              .then(function(response) {
+                  console.log(response);
+                  document.location.reload()
+              })
+              .catch(function(error) {
+                  console.log(error);
+              }
+          ); 
+        }
+    },
   }
 }
 </script>

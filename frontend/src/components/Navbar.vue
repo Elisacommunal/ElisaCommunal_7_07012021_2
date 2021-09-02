@@ -8,24 +8,19 @@
     <path d="M0,21L48,38.5C96,56,192,91,288,105C384,119,480,112,576,101.5C672,91,768,77,864,59.5C960,42,1056,21,1152,14C1248,7,1344,14,1440,24.5C1536,35,1632,49,1728,52.5C1824,56,1920,49,2016,49C2112,49,2208,56,2304,56C2400,56,2496,49,2592,38.5C2688,28,2784,14,2880,24.5C2976,35,3072,70,3168,94.5C3264,119,3360,133,3456,143.5C3552,154,3648,161,3744,140C3840,119,3936,70,4032,45.5C4128,21,4224,21,4320,24.5C4416,28,4512,35,4608,63C4704,91,4800,140,4896,143.5C4992,147,5088,105,5184,84C5280,63,5376,63,5472,59.5C5568,56,5664,49,5760,49C5856,49,5952,56,6048,66.5C6144,77,6240,91,6336,112C6432,133,6528,161,6624,157.5C6720,154,6816,119,6864,101.5L6912,84L6912,210L6864,210C6816,210,6720,210,6624,210C6528,210,6432,210,6336,210C6240,210,6144,210,6048,210C5952,210,5856,210,5760,210C5664,210,5568,210,5472,210C5376,210,5280,210,5184,210C5088,210,4992,210,4896,210C4800,210,4704,210,4608,210C4512,210,4416,210,4320,210C4224,210,4128,210,4032,210C3936,210,3840,210,3744,210C3648,210,3552,210,3456,210C3360,210,3264,210,3168,210C3072,210,2976,210,2880,210C2784,210,2688,210,2592,210C2496,210,2400,210,2304,210C2208,210,2112,210,2016,210C1920,210,1824,210,1728,210C1632,210,1536,210,1440,210C1344,210,1248,210,1152,210C1056,210,960,210,864,210C768,210,672,210,576,210C480,210,384,210,288,210C192,210,96,210,48,210L0,210Z"></path>
     </svg>
 </div>
-<!-- <div class="navbar__Wave">
-    <svg id="wave" viewBox="0 0 1440 130" version="1.1" xmlns="http://www.w3.org/2000/svg">
-    <path d="M0,39L60,34.7C120,30,240,22,360,26C480,30,600,48,720,54.2C840,61,960,56,1080,52C1200,48,1320,43,1440,54.2C1560,65,1680,91,1800,99.7C1920,108,2040,100,2160,93.2C2280,87,2400,82,2520,78C2640,74,2760,69,2880,65C3000,61,3120,56,3240,65C3360,74,3480,95,3600,86.7C3720,78,3840,39,3960,26C4080,13,4200,26,4320,32.5C4440,39,4560,39,4680,39C4800,39,4920,39,5040,32.5C5160,26,5280,13,5400,8.7C5520,4,5640,9,5760,13C5880,17,6000,22,6120,21.7C6240,22,6360,17,6480,13C6600,9,6720,4,6840,13C6960,22,7080,43,7200,54.2C7320,65,7440,65,7560,65C7680,65,7800,65,7920,56.3C8040,48,8160,30,8280,21.7C8400,13,8520,13,8580,13L8640,13L8640,130L8580,130C8520,130,8400,130,8280,130C8160,130,8040,130,7920,130C7800,130,7680,130,7560,130C7440,130,7320,130,7200,130C7080,130,6960,130,6840,130C6720,130,6600,130,6480,130C6360,130,6240,130,6120,130C6000,130,5880,130,5760,130C5640,130,5520,130,5400,130C5280,130,5160,130,5040,130C4920,130,4800,130,4680,130C4560,130,4440,130,4320,130C4200,130,4080,130,3960,130C3840,130,3720,130,3600,130C3480,130,3360,130,3240,130C3120,130,3000,130,2880,130C2760,130,2640,130,2520,130C2400,130,2280,130,2160,130C2040,130,1920,130,1800,130C1680,130,1560,130,1440,130C1320,130,1200,130,1080,130C960,130,840,130,720,130C600,130,480,130,360,130C240,130,120,130,60,130L0,130Z"></path></svg>
-</div> -->
-        <nav class="navbar navbar-expand  navbar__bgColor"> 
-            <div class="container-fluid ">
-            <router-link class="navbar-brand navbar--text" to="/accueil">Groupomania</router-link>
-                <div class="navbar" id="navbarNav">
-                    <ul class="navbar-nav">
-                        <li class="d-flex row nav-item active">   
-                            <router-link class="navbar--text col-4 nav-link" to="/profil">Profil</router-link>
-                            <router-link @click="returnAccueil()" class="navbar--text nav-link col-4" to="/">Déconnexion</router-link>
-                        </li>
-                    </ul>
-                </div>
+    <nav class="navbar navbar-expand  navbar__bgColor"> 
+        <div class="container-fluid ">
+        <router-link class="navbar-brand navbar--title" to="/accueil">Groupomania</router-link>
+            <div class="navbar" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="d-flex row nav-item active">   
+                        <router-link class="navbar--text col-4 nav-link" to="/profil">Profil</router-link>
+                        <router-link @click="returnAccueil()" class="navbar--text nav-link col-4" to="/">Déconnexion</router-link>
+                    </li>
+                </ul>
             </div>
-          </nav>
-            <!-- <img class="center2 row col-12 col-sm-8 col-md-6 col-lg-4" src="https://user.oc-static.com/upload/2019/09/04/15675819263013_image1.png" alt="Logo Orinoco"> -->
+        </div>
+        </nav>
 </template>
 <script>
 
@@ -33,9 +28,64 @@ export default {
     name: 'Navbar',
     methods: {
         returnAccueil(){
-            sessionStorage.clear();
-            
+            sessionStorage.clear();  
         }
     }
 }
 </script>
+<style lang="scss" scoped>
+/*Variables*/
+$color-primary :#091f43 ;
+$color-secondary : #d1515a;
+$color-tertiary :  #d4d4d4;
+
+
+.navbar{
+    &__wave{
+        position: absolute;
+        top: 0 !important;
+        width: 100%; 
+        fill: $color-primary; 
+        opacity: 0.9; 
+        transform: rotateY(180deg) rotate(180deg);
+        @media screen and (max-width: 975px) {
+            display: none;
+        }
+    }
+    &__Wave{
+        display: none;
+        position: absolute;
+        top: 0 !important;
+        width: 100%; 
+        fill: $color-primary; 
+        opacity: 0.9; 
+        transform: rotateY(180deg) rotate(180deg);
+        @media screen and (max-width: 975px) {
+            display: block;
+        }
+        @media screen and (max-width:650px) {
+            display: none;
+        }
+    }
+    &--text{
+        color: $color-tertiary !important;
+        &:hover{
+            transition: 600ms;
+            color: $color-secondary !important;     
+        }
+    }
+    &--title{
+            font-weight: 600;
+            color: $color-tertiary !important
+        }
+    &__bgColor{
+        position: relative;
+        background-color: transparentize($color-primary, 1);
+        height: 60px;
+        @media screen and (max-width: 650px) {
+            background-color:$color-primary;
+        } 
+    }  
+}
+
+</style>
