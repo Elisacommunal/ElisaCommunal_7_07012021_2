@@ -6,6 +6,7 @@ const Article = function(article) {
     this.user_name = article.user_name;
     this.user_firstName = article.user_firstName;
     this.id_User = article.id_User;
+    this.user_profilPic = article.user_profilPic;
     this.image = article.image
 };
   

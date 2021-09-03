@@ -11,7 +11,7 @@
     <nav class="navbar navbar-expand  navbar__bgColor"> 
         <div class="container-fluid ">
         <router-link class="navbar-brand navbar--title" to="/accueil">Groupomania</router-link>
-            <div class="navbar" id="navbarNav">
+            <div class="navbar" id="navbarNav"> 
                 <ul class="navbar-nav">
                     <li class="d-flex row nav-item active">   
                         <router-link class="navbar--text col-4 nav-link" to="/profil">Profil</router-link>
@@ -84,6 +84,7 @@ $color-tertiary :  #d4d4d4;
         height: 60px;
         @media screen and (max-width: 650px) {
             background-color:$color-primary;
+            opacity: 0.9;
         } 
     }  
 }

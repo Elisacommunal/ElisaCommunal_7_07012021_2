@@ -30,6 +30,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 
 app.use('/images', express.static(path.join(__dirname, 'images')));
+app.use('/profilPic', express.static(path.join(__dirname, 'profilPic')));
 
 app.use('/user', userRoutes);
 app.use('/article', articleRoutes);

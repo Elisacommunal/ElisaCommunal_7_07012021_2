@@ -6,14 +6,15 @@ const vpass = require('../middleware/validate-password')
 const auth = require('../middleware/auth')
 const authAdmin = require('../middleware/authAdmin')
 const authUser = require('../middleware/authUser')
+const multerProfil = require('../middleware/multer-profil')
 
-router.post('/signup',  vpass,  userCtrl.signup);
+router.post('/signup', multerProfil, vpass, userCtrl.signup);
 router.post('/login', userCtrl.login);
 
 //Admin
 router.get('/', userCtrl.findAll);
 router.get('/:userId', userCtrl.findOne);
-router.put('/:userId', userCtrl.update);
+router.put('/:userId',multerProfil, userCtrl.update);
 router.delete('/:userId', userCtrl.delete);
 router.delete('/', userCtrl.deleteAll);
 

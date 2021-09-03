@@ -8,6 +8,7 @@
       this.firstName = client.firstName;
       this.profession = client.profession;
       this.Admin = client.Admin;
+      this.profilPic = client.profilPic
   };
   
     User.create = async (newUtilisateur, result) => {
@@ -76,8 +77,8 @@
 
       User.updateById = (id, user, result) => {
         sql.query(
-          "UPDATE user SET email = ?, password = ?, name = ?, firstName = ?, profession = ?, admin = ? WHERE id = ?",
-          [user.email, user.password, user.name, user.firstName, user.profession, user.admin, id],
+          "UPDATE user SET email = ?, password = ?, name = ?, firstName = ?, profession = ?, Admin = ?, profilPic= ? WHERE id = ?",
+          [user.email, user.password, user.name, user.firstName, user.profession, user.Admin, user.profilPic, id],
           (err, res) => {
             if (err) {
               console.log("error: ", err);

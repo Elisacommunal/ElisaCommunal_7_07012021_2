@@ -4,7 +4,7 @@
             <div>
                 <img class="img d-flex col-10 offset-1 col-md-6 offset-md-3 col-lg-6 offset-lg-3" alt="logo" src="../assets/icon-left-font-monochrome-black.svg">
             </div>
-        <div v-if="isAdmin == 0" class="card card--profil text-center pt-4 pb-4"> 
+        <div class="card card--profil text-center pt-4 pb-4"> 
             <h1 class="text-center card__title--user">Profil</h1>
             <h2 class="">E-mail : {{email}}</h2>
             <h2 class="">Nom : {{userName}}</h2>
@@ -14,7 +14,11 @@
                 <button class="btn btn__colorP col-4 col-lg-2 m-2"  type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">Modifier</button>
                     <div class="collapse" id="collapseExample">
                         <div class="card__comment">
-                            <form class="row col-10 offset-1" id="formChecked">
+                            <form class="row col-10 offset-1" id="formChecked" enctype="multipart/form-data">
+                                <div class="form-group">
+                                    <input type="file" accept="image/*" id="imageInput" name="profilPic" @change="onFileChange(e)" required>
+                                    <img :src="imagePreview" v-if="imagePreview"  style="max-height: 100px;display:block;margin-top:10px">
+                                </div>
                                 <div class="col-10 offset-1 col-md-8 offset-md-2 mt-3">
                                     <input type="email" v-model="email" class="form-control border-dark" id="inputEmail" placeholder="📧 E-mail" aria-label="email" pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" required >
                                 </div>
@@ -78,6 +82,8 @@ export default {
         userFirstName: sessionStorage.getItem("userFirstName"),
         profession: sessionStorage.getItem("profession"),
         id: sessionStorage.getItem("userId"),
+        imagePreview:'',
+        profilPic:'',
         dataUser: 
            axios.get('http://localhost:3000/user', {
             method: 'GET',
@@ -91,6 +97,21 @@ export default {
        }
   },
   methods: {
+      onFileChange(e) {
+            const imageInput = document.querySelector('input[type="file"]')
+            const file = imageInput.files[0];
+            console.log(file);
+            this.profilPic = file;
+            console.log(this.profilPic);
+
+            /* imageInput.setValue(file); /
+           /  this.sauceForm.updateValueAndValidity(); */
+            const reader = new FileReader();
+            reader.onload = () => {
+            this.imagePreview = reader.result ;
+            };
+            reader.readAsDataURL(file);
+    },
      deleteProfil(data) {
         if(confirm("Supprimer le profil ?")){
             const user_id = VueJwtDecode.decode(sessionStorage.getItem("token")).id;
@@ -117,27 +138,40 @@ export default {
     if (formChecked == false) {
         alert('Merci de bien vouloir remplir tout les champs requis afin de valider votre commande');
     }else{
-        let contact = {
-            email: document.getElementById('inputEmail').value,
-            password: document.getElementById('inputPassword').value, 
-            name: document.getElementById('inputName').value,
-            firstName: document.getElementById('inputFirstName').value,
-            profession: document.getElementById('inputProfession').value,
-        };
+           
+            const firstName = document.getElementById('inputFirstName').value;
+            const name = document.getElementById('inputName').value;
+            const profession = document.getElementById('inputProfession').value;
+            const password = document.getElementById('inputPassword').value;
+            const email = document.getElementById('inputEmail').value;
+            const Admin =  VueJwtDecode.decode(sessionStorage.getItem("token")).isAdmin;
+            const profilPic = this.profilPic;
+console.log("admin", Admin);
+
+
+            console.log('test');
+        const formData = new FormData();
+        formData.append('firstName', firstName);
+        formData.append('name', name);
+        formData.append('profession', profession);
+        formData.append('password', password);
+        formData.append('email', email);
+        formData.append('Admin', Admin);
+        formData.append('profilPic', profilPic);
+
         const user_id = VueJwtDecode.decode(sessionStorage.getItem("token")).id;
         console.log(user_id);
-        const sendUpdate = fetch('http://localhost:3000/user/' + user_id, {
-            method: 'PUT',
-            body: JSON.stringify(contact),
+        axios.put('http://localhost:3000/user/' + user_id, formData,{
+            
             headers:{
-                'Content-Type' : 'application/json',
+                'Content-Type' : 'multpart/form-data',
                 'Authorization': 'Bearer ' + sessionStorage.getItem("token")
             }
         })
-        sendUpdate.then( async response =>{
+        .then( async response =>{
 
             try{
-                let confirmation = await response.json();
+                let confirmation = await response.data;
                 console.log(confirmation);
                 sessionStorage.clear()
                 console.log(sessionStorage);
@@ -150,7 +184,7 @@ export default {
     deleteUser(donnee) {
         if(confirm("Supprimer le profil ?")){
                 axios.delete('http://localhost:3000/user/'+ donnee, {
-                    method: "DELETE",
+                    method: "DELETE", 
                     headers: {
                     'Authorization': 'Bearer ' + sessionStorage.getItem("token")
                 }})
