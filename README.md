@@ -1,6 +1,6 @@
 # ElisaCommunal_7_07012021_2
 
-Ce projet a éé réalisé avec : -ExpressJs -VueJs -MySQL -Bootstrap -Sass
+Ce projet a été réalisé avec : -ExpressJs -VueJs -MySQL -Bootstrap -Sass
 
 ❗ Veillez coller le fichier .env dans le dossier Back-end ❗
 
