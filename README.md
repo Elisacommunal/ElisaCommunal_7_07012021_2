@@ -51,7 +51,7 @@ Concernant la base de données
 =
 Afin de lancer le serveur, il faudra au préalable importer le fichier sql groupomania.sql présent à la racine du projet dans la base de données PHPMyAdmin.
 
-Pour ce faire, vous devez ouvrir PHPMyAdmin, créer une nouvele base de données nommée "groupomania" puis y importer le fichier "groupomania.sql"
+Pour ce faire, vous devez ouvrir PHPMyAdmin, créer une nouvelle base de données nommée "groupomania" puis y importer le fichier "groupomania.sql"
 
 Mise en route
 =
