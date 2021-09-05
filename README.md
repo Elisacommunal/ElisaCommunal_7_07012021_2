@@ -13,7 +13,7 @@ Pour lancer l'application, nous allons avoir besoin de toutes les dépendances n
 
 Pour ce faire veuillez suivre les instructions suivantes :
 
-scindez votre terminal en 2 :
+scindez votre terminal en 2
   - sur l'un tapez: 
     - cd .\Back-end\
     - npm install axios bcrypt body-parser cors dotenv express 
