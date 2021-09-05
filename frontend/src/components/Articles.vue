@@ -10,7 +10,7 @@
                                 <a v-if="item.id_User == sessionUserId || isAdmin == 1" @click="deletePost(item.id)" class="offset-10 col-2 btn btn__colorS mt-2 mb-2"><i class="fas fa-trash-alt"></i></a>
                             </div>
                         </div>
-                        <img class="article__profilPic" v-if="item.user_profilPic" :src="item.user_profilPic" alt=""> 
+                        <img class="article__profilPic " v-if="item.user_profilPic" :src="item.user_profilPic" alt=""> 
                         <div class="row">
                             
                             <h2 class="card__title--user article-userName col-6 offset-3">{{ item.user_name }} {{ item.user_firstName }}</h2>
@@ -189,7 +189,6 @@ $color-tertiary :  #d4d4d4;
         height: 150px;
         object-fit: cover;
         object-position: 50% 50%;
-        
     }
 }
 .btn-close{

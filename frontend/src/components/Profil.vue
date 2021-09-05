@@ -6,6 +6,7 @@
             </div>
         <div class="card card--profil text-center pt-4 pb-4"> 
             <h1 class="text-center card__title--user">Profil</h1>
+            <img class="pic" v-if="pic" :src="pic" alt=""> 
             <h2 class="">E-mail : {{email}}</h2>
             <h2 class="">Nom : {{userName}}</h2>
             <h2 class="article-content">Prénom : {{userFirstName}}</h2>
@@ -15,7 +16,7 @@
                     <div class="collapse" id="collapseExample">
                         <div class="card__comment">
                             <form class="row col-10 offset-1" id="formChecked" enctype="multipart/form-data">
-                                <div class="form-group">
+                                <div class="form-group col-10 offset-1 col-md-8 offset-md-2 mt-3">
                                     <input type="file" accept="image/*" id="imageInput" name="profilPic" @change="onFileChange(e)" required>
                                     <img :src="imagePreview" v-if="imagePreview"  style="max-height: 100px;display:block;margin-top:10px">
                                 </div>
@@ -44,11 +45,12 @@
             </div>
         </div>
         <div v-if="isAdmin == 1">
+            <h2 class="text-center">Profil des utilisateurs</h2>
             <div class="container-fluid d-flex flex-column align-items-center">
             <div class="row m-4 col-8 offset-2 ">
                 <div class="container-article d-flex flex-column-reverse ">
                     <div class="card text-center" v-if="dataUser" v-for="user in dataUser" :key="user.id"> 
-                        <h1 class="text-center card__title--user">Profil</h1>
+                        <img class="pic pic__admin" v-if="user.profilPic" :src="user.profilPic" alt=""> 
                         <h2 class="">E-mail : {{user.email}}</h2>
                         <h2 class="">Nom : {{user.name}}</h2>
                         <h2 class="article-content">Prénom : {{user.firstName}}</h2>
@@ -82,6 +84,7 @@ export default {
         userFirstName: sessionStorage.getItem("userFirstName"),
         profession: sessionStorage.getItem("profession"),
         id: sessionStorage.getItem("userId"),
+        pic : sessionStorage.getItem('profilPic'),
         imagePreview:'',
         profilPic:'',
         dataUser: 
@@ -201,6 +204,28 @@ console.log("admin", Admin);
   }
 }
 </script>
-<style lang="sass" scoped>
+<style lang="scss" scoped>
+$color-primary :#091f43 ;
+$color-secondary : #d1515a;
+$color-tertiary :  #d4d4d4;
+.pic{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 15px;
+    margin-top: 15px;
+    border-radius: 50% ;
+    border: transparentize($color-secondary, .2) solid 4px;
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    object-position: 50% 50%;
+    &__admin{
+        width: 100px;
+        height: 100px;
+    }
+}
 
 </style>

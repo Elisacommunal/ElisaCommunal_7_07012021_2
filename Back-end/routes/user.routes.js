@@ -12,10 +12,10 @@ router.post('/signup', multerProfil, vpass, userCtrl.signup);
 router.post('/login', userCtrl.login);
 
 //Admin
-router.get('/', userCtrl.findAll);
-router.get('/:userId', userCtrl.findOne);
-router.put('/:userId',multerProfil, userCtrl.update);
-router.delete('/:userId', userCtrl.delete);
-router.delete('/', userCtrl.deleteAll);
+router.get('/', auth, authAdmin, userCtrl.findAll);
+router.get('/:userId', auth, authUser,  userCtrl.findOne);
+router.put('/:userId', auth, authUser,  multerProfil, vpass, userCtrl.update);
+router.delete('/:userId', auth, authUser, userCtrl.delete);
+/* router.delete('/', auth, userCtrl.deleteAll); */
 
 module.exports = router;

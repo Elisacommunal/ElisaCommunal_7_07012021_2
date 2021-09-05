@@ -19,8 +19,8 @@ module.exports = (req, res, next) =>  {
             });
         }
     
-    req.id_user = decoded.userId;
-    console.log("voici le id_user du token:",req.id_user);
+    /* req.id_user = decoded.userId;
+    console.log("voici le id_user du token:",req.id_user); */
     next();
   });
 }; 

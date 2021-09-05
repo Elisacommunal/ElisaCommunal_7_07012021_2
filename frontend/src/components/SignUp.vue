@@ -1,7 +1,7 @@
 <template>
     <div class="container">
     <form class="row col-10 offset-1" id="formChecked" enctype="multipart/form-data">
-    <div class="form-group">
+    <div class="form-group col-10 offset-1 col-md-8 offset-md-2 mt-3">
             <input type="file" accept="image/*" id="imageInput" name="profilPic" @change="onFileChange(e)" required>
             <img :src="imagePreview" v-if="imagePreview"  style="max-height: 100px;display:block;margin-top:10px">
         </div>
@@ -18,7 +18,7 @@
             <input type="text" class="form-control border-dark" id="inputFirstName" placeholder="👉 Prénom" aria-label="firstName" required>
         </div>
         <div class="col-10 offset-1 col-md-8 offset-md-2 mt-3">
-            <input type="text" class="form-control border-dark" id="inputProfession" placeholder="💼 Poste" aria-label="profession" pattern="[A-Z][a-z]{2,50}" required>
+            <input type="text" class="form-control border-dark" id="inputProfession" placeholder="💼 Poste" aria-label="profession" required>
         </div>
     </form>
     <div>

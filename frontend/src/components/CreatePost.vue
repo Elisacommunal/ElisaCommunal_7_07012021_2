@@ -2,7 +2,7 @@
 <div class="container col-6 offset-3">
     <div class="row card center  pt-3 pb-3">
         <form  id="formChecked" class="col-8 offset-2" enctype="multipart/form-data">
-         <div class="form-group">
+         <div class="form-group col-10 offset-1 col-md-8 offset-md-2 mt-3">
             <input type="file" accept="image/*" id="imageInput" name="image" @change="onFileChange(e)">
             <img :src="imagePreview" v-if="imagePreview"  style="max-height: 100px;display:block;margin-top:10px">
         </div>

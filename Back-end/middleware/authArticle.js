@@ -6,13 +6,13 @@ dotenv.config();
 module.exports = (req, res, next) => {
     try{
         console.log("authArticle");
-    const token = req.headers.authorization.split(' ')[1];
-    const decodedToken = jwt.verify(token, process.env.DB_TOKEN);
-    const userId = decodedToken.userId;
-    console.log("userToken",userId);
-    const isAdmin = decodedToken.isAdmin;
-    console.log("Admin",isAdmin);
-    console.log("idArticle de req.params", req.params.articleId);
+        const token = req.headers.authorization.split(' ')[1];
+        const decodedToken = jwt.verify(token, process.env.DB_TOKEN);
+        const userId = decodedToken.userId;
+        console.log("userToken",userId);
+        const isAdmin = decodedToken.isAdmin;
+        console.log("Admin",isAdmin);
+        console.log("idArticle de req.params", req.params.articleId);
     
     sql.query(`SELECT * FROM article WHERE id = ${req.params.articleId}`, (err, data) => {
         console.log(data);
