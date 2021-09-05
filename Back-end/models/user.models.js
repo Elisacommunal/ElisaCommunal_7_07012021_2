@@ -11,8 +11,8 @@
       this.profilPic = client.profilPic
   };
   
-    User.create = (newUtilisateur, result) => {
-      sql.query("INSERT INTO user SET ?", newUtilisateur, (err, res) => {
+    User.create = async (newUtilisateur, result) => {
+      let sign = await sql.query("INSERT INTO user SET ?", newUtilisateur, (err, res) => {
         if (err) {
           console.log("error: ", err);
           result(err, null);
@@ -21,6 +21,7 @@
         console.log("created user: ", { id: res.insertId, ...newUtilisateur });
        return result(null, { id: res.insertId, ...newUtilisateur });
       });
+      return sign
     };
 
 
