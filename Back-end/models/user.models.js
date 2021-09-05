@@ -11,8 +11,8 @@
       this.profilPic = client.profilPic
   };
   
-    User.create = async (newUtilisateur, result) => {
-      let tarte = await sql.query("INSERT INTO user SET ?", newUtilisateur, (err, res) => {
+    User.create = (newUtilisateur, result) => {
+      sql.query("INSERT INTO user SET ?", newUtilisateur, (err, res) => {
         if (err) {
           console.log("error: ", err);
           result(err, null);
