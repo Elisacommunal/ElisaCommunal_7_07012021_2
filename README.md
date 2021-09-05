@@ -25,8 +25,6 @@ scindez votre terminal en 2
     - npm install axios bootstrap core-js vue-router vue-jwt-decode
 
 
-    - lancez le front avec l'instruction "npm run serve"
-
 Les fonctionnalités de ces dépendances sont les suivantes :
 =
 - axios : c'est une bibliothèque JavaScript fonctionnant comme un client HTTP qui permet de communiquer avec des API en utilisant des requêtes
