@@ -25,6 +25,7 @@
 <script>
 // @ is an alias to /src
 import axios from 'axios'
+import VueJwtDecode from "vue-jwt-decode";
 
 export default {
   name: 'create',
@@ -60,12 +61,12 @@ onFileChange(e) {
     },
 
       createPost() {
-           const userId = sessionStorage.getItem("userId");
-            const userFirstName = sessionStorage.getItem("userFirstName");
-            const userName =  sessionStorage.getItem("userName");
+           const userId = VueJwtDecode.decode(sessionStorage.getItem("token")).id;
+            const userFirstName = VueJwtDecode.decode(sessionStorage.getItem("token")).userFirstName;
+            const userName =  VueJwtDecode.decode(sessionStorage.getItem("token")).userName;
             const titre = document.getElementById('articleTitle').value;
             const contenu = document.getElementById('articleContent').value;
-            const user_profilPic =  sessionStorage.getItem("profilPic");
+            const user_profilPic =  VueJwtDecode.decode(sessionStorage.getItem("token")).profilPic;
             console.log('test');
         const formData = new FormData();
         formData.append('titre', titre);

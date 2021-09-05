@@ -57,7 +57,7 @@
         });
       };
       User.findById = (userId, result) => {
-        sql.query(`SELECT * FROM user WHERE id = ${userId}`, (err, res) => {
+          sql.query(`SELECT * FROM user WHERE id = ?`, [userId], (err, res) => {
           if (err) {
             console.log("error: ", err);
             result(err, null);

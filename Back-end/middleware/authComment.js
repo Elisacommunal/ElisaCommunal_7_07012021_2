@@ -15,10 +15,10 @@ module.exports = (req, res, next) => {
 
     console.log("idComment de req.params", req.params.commentId);
     
-    sql.query(`SELECT * FROM commentaire WHERE id = ${req.params.commentId}`, (err, data) => {
+    sql.query(`SELECT * FROM commentaire WHERE id = ?`,[req.params.commentId] , (err, data) => {
         console.log(data);
 
-        if ( isAdmin === 1  || (data[0].id_user === userId)) {
+        if ( isAdmin === 1  || (data[0].id_User === userId)) {
             console.log("action autorisée");
             next();
         } else {

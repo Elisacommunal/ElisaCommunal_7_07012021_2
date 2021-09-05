@@ -37,7 +37,7 @@ const Article = function(article) {
       };
 
       Article.findById = (articleId, result) => {
-        sql.query(`SELECT * FROM article WHERE id = ${articleId}`, (err, res) => {
+        sql.query(`SELECT * FROM article WHERE id = ?`, [articleId], (err, res) => {
           if (err) {
             console.log("error: ", err);
             result(err, null);

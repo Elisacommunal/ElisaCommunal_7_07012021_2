@@ -28,16 +28,23 @@ exports.signup =  (req, res, next) => {
                   });
               else{
                   res.status(200).json({
-                      isAdmin : data.Admin,
+                      /* isAdmin : data.Admin,
                       id: data.id,
                       email : data.email,
                       userName: data.name,
                       userFirstName: data.firstName,
                       profession: data.profession,
-                      profilPic: data.profilPic,
+                      profilPic: data.profilPic, */
                       token: jwt.sign(
-                          { id: data.id,
-                            isAdmin : data.Admin},
+                          { 
+                            isAdmin : data.Admin,
+                            id: data.id,
+                            email : data.email,
+                            userName: data.name,
+                            userFirstName: data.firstName,
+                            profession: data.profession,
+                            profilPic: data.profilPic,
+                          },
                           process.env.DB_TOKEN,
                           { expiresIn: '24h' }
                         )
@@ -67,17 +74,23 @@ exports.login = (req, res, next) => {
                         return res.status(401).json({ error: 'Mot de passe incorrect !' });
                     }else{
                         res.status(200).json({
-                              isAdmin : data.Admin,
+                             /*  isAdmin : data.Admin,
                               email : data.email,
                               id: data.id,
                               userName: data.name,
                               userFirstName: data.firstName,
                               profession: data.profession,
-                              profilPic: data.profilPic,
+                              profilPic: data.profilPic, */
                               token: jwt.sign(
-                                    { id: data.id,
-                                      isAdmin : data.Admin
-                                    },
+                                { 
+                                  isAdmin : data.Admin,
+                                  id: data.id,
+                                  email : data.email,
+                                  userName: data.name,
+                                  userFirstName: data.firstName,
+                                  profession: data.profession,
+                                  profilPic: data.profilPic,
+                                },
                                     process.env.DB_TOKEN,
                                     { expiresIn: '24h' }
                               )

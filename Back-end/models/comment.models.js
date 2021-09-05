@@ -35,7 +35,7 @@ Comment.create = (newComment, result) => {
       };
 
       Comment.findById = (commentId, result) => {
-        sql.query(`SELECT * FROM commentaire WHERE id = ${commentId}`, (err, res) => {
+        sql.query(`SELECT * FROM commentaire WHERE id = ?`, [commentId], (err, res) => {
           if (err) {
             console.log("error: ", err);
             result(err, null);
@@ -54,7 +54,7 @@ Comment.create = (newComment, result) => {
       };
 
       Comment.findByArticleId = (articleId, result) => {
-        sql.query(`SELECT * FROM commentaire WHERE id_article = ${articleId}`, (err, res) => {
+        sql.query(`SELECT * FROM commentaire WHERE id_article = ?`, [articleId], (err, res) => {
           if (err) {
             console.log("error: ", err);
             result(err, null);

@@ -29,6 +29,7 @@
 <script>
 
 import axios from 'axios'
+import VueJwtDecode from "vue-jwt-decode";
 
 export default {
     name:'SignUp',
@@ -90,13 +91,13 @@ export default {
                 console.log(confirmation);
 
                 sessionStorage.setItem("token", confirmation.token)
-                sessionStorage.setItem("email", confirmation.email)
+                /* sessionStorage.setItem("email", confirmation.email)
                 sessionStorage.setItem("admin", confirmation.isAdmin)
                 sessionStorage.setItem("userName", confirmation.userName)
                 sessionStorage.setItem("userFirstName", confirmation.userFirstName)
                 sessionStorage.setItem("profession", confirmation.profession)
                 sessionStorage.setItem("profilPic", confirmation.profilPic)
-                sessionStorage.setItem("userId", confirmation.id)
+                sessionStorage.setItem("userId", confirmation.id) */
                 console.log(sessionStorage);
                 window.location.href = "/accueil";
                 

@@ -79,12 +79,12 @@ export default {
   data(){
     return{
         isAdmin: VueJwtDecode.decode(sessionStorage.getItem("token")).isAdmin,
-        email: sessionStorage.getItem("email"),
-        userName: sessionStorage.getItem("userName"),
-        userFirstName: sessionStorage.getItem("userFirstName"),
-        profession: sessionStorage.getItem("profession"),
-        id: sessionStorage.getItem("userId"),
-        pic : sessionStorage.getItem('profilPic'),
+        email: VueJwtDecode.decode(sessionStorage.getItem("token")).email,
+        userName: VueJwtDecode.decode(sessionStorage.getItem("token")).userName,
+        userFirstName: VueJwtDecode.decode(sessionStorage.getItem("token")).userFirstName,
+        profession: VueJwtDecode.decode(sessionStorage.getItem("token")).profession,
+        id: VueJwtDecode.decode(sessionStorage.getItem("token")).id,
+        pic : VueJwtDecode.decode(sessionStorage.getItem("token")).profilPic,
         imagePreview:'',
         profilPic:'',
         dataUser: 

@@ -56,14 +56,15 @@
 </template>
 <script>
 import axios from "axios"
+import VueJwtDecode from "vue-jwt-decode";
 
 export default {
    name: 'Articles',
    data(){
        return {
-           sessionUserId: sessionStorage.getItem("userId"),
+           sessionUserId: VueJwtDecode.decode(sessionStorage.getItem("token")).id,
            comment: '',
-           isAdmin: sessionStorage.getItem("admin"),
+           isAdmin: VueJwtDecode.decode(sessionStorage.getItem("token")).isAdmin,
            dataArticle: 
            axios.get('http://localhost:3000/article', {
             method: 'GET',
@@ -94,9 +95,9 @@ export default {
            }
        },
        createComment(data) {
-            const userName = sessionStorage.getItem("userName");
-            const userFirstName = sessionStorage.getItem("userFirstName");
-            const userId = sessionStorage.getItem("userId");
+            const userName = VueJwtDecode.decode(sessionStorage.getItem("token")).userName;
+            const userFirstName = VueJwtDecode.decode(sessionStorage.getItem("token")).userFirstName;
+            const userId = VueJwtDecode.decode(sessionStorage.getItem("token")).id;
             console.log('testCom');
             console.log("userName:", userName);
             console.log("userFirstName:", userFirstName);

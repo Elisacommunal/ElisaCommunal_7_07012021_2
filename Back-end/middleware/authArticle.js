@@ -14,9 +14,9 @@ module.exports = (req, res, next) => {
         console.log("Admin",isAdmin);
         console.log("idArticle de req.params", req.params.articleId);
     
-    sql.query(`SELECT * FROM article WHERE id = ${req.params.articleId}`, (err, data) => {
+    sql.query(`SELECT * FROM article WHERE id = ?`, [req.params.articleId],(err, data) => {
         console.log(data);
-        if ( isAdmin === 1 || (data[0].id_user === userId)) {
+        if ( isAdmin === 1 || (data[0].id_User === userId)) {
             console.log("action autorisée");
             next();
         } else {

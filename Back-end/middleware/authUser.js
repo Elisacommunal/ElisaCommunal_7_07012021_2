@@ -14,7 +14,7 @@ module.exports = (req, res, next) => {
     console.log("Admin",isAdmin);
     console.log("idUser de req.params", req.params.userId);
     
-    sql.query(`SELECT * FROM user WHERE id = ${req.params.userId}`, (err, data) => {
+    sql.query(`SELECT * FROM user WHERE id = ?`,[req.params.userId], (err, data) => {
         console.log(data);
 
         if ( isAdmin === 1 || (data[0].id === userId)) {
